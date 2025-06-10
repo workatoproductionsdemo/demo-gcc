@@ -1,0 +1,250 @@
+{
+  "name": "HR Automation Solution",
+  "description": "",
+  "version": 2,
+  "private": true,
+  "concurrency": 1,
+  "code": {
+    "number": 0,
+    "provider": "clock",
+    "name": "scheduled_event",
+    "as": "d6e15853",
+    "title": null,
+    "description": "<span class=\"provider\">Trigger</span> every 5 minutes",
+    "keyword": "trigger",
+    "input": {
+      "time_unit": "minutes",
+      "trigger_every": "5"
+    },
+    "extended_input_schema": [
+      {
+        "control_type": "integer",
+        "default": "5",
+        "enforce_template_mode": true,
+        "extends_schema": true,
+        "hint": "Define repeating schedule. Enter whole numbers only.\n                        This field can be set to a minimum of 5 minutes.",
+        "label": "Trigger every",
+        "name": "trigger_every",
+        "optional": false,
+        "suffix": {
+          "text": "minutes"
+        },
+        "type": "string"
+      },
+      {
+        "control_type": "select",
+        "hint": "Select the timezone to use. Leave it blank to use <b>{{authUser.account_timezone}}</b>",
+        "label": "Timezone",
+        "name": "timezone",
+        "optional": true,
+        "pick_list": "timezone_id_global_pick_list",
+        "pick_list_connection_less": true,
+        "type": "string"
+      },
+      {
+        "control_type": "date_time",
+        "enforce_template_mode": true,
+        "extends_schema": true,
+        "hint": "Set date and time to start or leave blank to start immediately. <b>Once recipe has been run or tested, value cannot be changed.</b>",
+        "label": "Start after",
+        "name": "start_after",
+        "optional": true,
+        "parse_output": "date_time_conversion",
+        "since_field": true,
+        "type": "date_time",
+        "ignore_timezone": true,
+        "render_input": "date_time_conversion"
+      }
+    ],
+    "block": [
+      {
+        "number": 1,
+        "provider": "logger",
+        "name": "log_message",
+        "as": "fa7a9a65",
+        "title": null,
+        "description": "Log <span class=\"provider\">message</span> to <span class=\"provider\">Job report</span>",
+        "keyword": "action",
+        "input": {
+          "user_logs_enabled": "false",
+          "message": "Test"
+        },
+        "extended_input_schema": [
+          {
+            "control_type": "switch",
+            "default": false,
+            "disable_formula": true,
+            "extends_schema": true,
+            "hint": "                Send a copy of the message to Workato logs.\n                <a href=\"https://docs.workato.com/features/logging-service.html\" target=\"_blank\" class=\"ng-scope\">\n                  Learn more\n                </a>\n",
+            "label": "Send to Workato log service",
+            "name": "user_logs_enabled",
+            "optional": true,
+            "type": "string"
+          }
+        ],
+        "uuid": "3b420ece-1380-4987-a9eb-4ba4a482eb3e"
+      },
+      {
+        "number": 2,
+        "provider": "google_sheets",
+        "name": "add_spreadsheet_row_v4",
+        "as": "5b78674e",
+        "title": null,
+        "description": null,
+        "keyword": "action",
+        "dynamicPickListSelection": {
+          "spreadsheet": "CCL"
+        },
+        "toggleCfg": {
+          "is_top_left": true
+        },
+        "input": {
+          "team_drives": "my_drive",
+          "is_top_left": "false",
+          "spreadsheet": "116sMY6WJb5gxOXiFJBpe3ldA0d9emcuojO7PrlDSBOo",
+          "sheet": "Sheet1",
+          "data": {
+            "col_1": "Test"
+          }
+        },
+        "extended_input_schema": [
+          {
+            "control_type": "select",
+            "extends_schema": true,
+            "hint": "Select a sheet to add row to. The sheet must have at least one header row. <a href='https://docs.workato.com/connectors/google-sheets/action-add-row.html#setting-up-the-google-sheet' target='_blank'>Learn more</a>",
+            "label": "Sheet",
+            "name": "sheet",
+            "optional": false,
+            "pick_list": [
+              [
+                "Sheet1",
+                "Sheet1"
+              ]
+            ],
+            "toggle_field": {
+              "control_type": "text",
+              "label": "Sheet name",
+              "toggle_hint": "Use sheet name",
+              "extends_schema": true,
+              "change_on_blur": true,
+              "toggle_to_secondary_hint": "Use sheet name",
+              "toggle_to_primary_hint": "Select a sheet",
+              "hint": "Use <b>Sheet name</b> pill from the output of other Google Sheets’ triggers/actions. Or enter sheet name manually. The sheet must have at least 1 header row in input field.",
+              "type": "string",
+              "name": "sheet_name"
+            },
+            "toggle_hint": "Select a sheet",
+            "type": "string"
+          },
+          {
+            "hint": "Input values of the new row.",
+            "label": "Columns",
+            "name": "data",
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "First Name",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_1"
+              },
+              {
+                "control_type": "text",
+                "label": "Last Name",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_2"
+              },
+              {
+                "control_type": "text",
+                "label": "Email Address",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_3"
+              },
+              {
+                "control_type": "text",
+                "label": "Industry",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_4"
+              },
+              {
+                "control_type": "text",
+                "label": "Status",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_5"
+              },
+              {
+                "control_type": "text",
+                "label": "Street",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_6"
+              },
+              {
+                "control_type": "text",
+                "label": "Phone",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_7"
+              },
+              {
+                "control_type": "text",
+                "label": "Birthdate",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_8"
+              },
+              {
+                "control_type": "text",
+                "label": "Postal Code",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "col_9"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "uuid": "5af50288-2332-4990-95e1-3fde48496bad"
+      }
+    ],
+    "uuid": "ba21de11-1cce-42cd-a949-7b693bbfb4a6",
+    "unfinished": false
+  },
+  "config": [
+    {
+      "keyword": "application",
+      "provider": "clock",
+      "skip_validation": false,
+      "account_id": null
+    },
+    {
+      "keyword": "application",
+      "provider": "logger",
+      "skip_validation": false,
+      "account_id": null
+    },
+    {
+      "keyword": "application",
+      "provider": "google_sheets",
+      "skip_validation": false,
+      "account_id": {
+        "zip_name": "Financial Solutions/my_google_sheets_account.connection.json",
+        "name": "My Google Sheets account",
+        "folder": "Financial Solutions"
+      }
+    }
+  ]
+}
