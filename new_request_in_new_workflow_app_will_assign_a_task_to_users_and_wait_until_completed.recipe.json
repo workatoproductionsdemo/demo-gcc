@@ -1,0 +1,392 @@
+{
+  "name": "New request in New workflow app will assign a task to users and wait until completed",
+  "version": 2,
+  "private": true,
+  "concurrency": 1,
+  "code": {
+    "as": "new_requests_realtime",
+    "provider": "workato_workflow_task",
+    "keyword": "trigger",
+    "name": "new_requests_realtime",
+    "description": "New request in <span class=\"provider\">New workflow app</span>",
+    "input": {
+      "app_id": {
+        "zip_name": "new_workflow_app.lcap_app.json",
+        "name": "New workflow app",
+        "folder": ""
+      }
+    },
+    "block": [
+      {
+        "as": "human_review_on_existing_record",
+        "provider": "workato_workflow_task",
+        "keyword": "action",
+        "name": "human_review_on_existing_record",
+        "description": "Assign a task to users in <span class=\"provider\">New workflow app</span> and wait until completed",
+        "input": {
+          "app_id": {
+            "zip_name": "new_workflow_app.lcap_app.json",
+            "name": "New workflow app",
+            "folder": ""
+          },
+          "record_id": "#{_('data.workato_workflow_task.new_requests_realtime.request.11fbe9a6_a16d_4d7e_86ea_afe42ec03005')}",
+          "name": "Review #{_('data.workato_workflow_task.new_requests_realtime.request.2b44b054_369d_4745_bd7a_599629ed365e')}",
+          "email": "anthony.santhanaraj@workato.com",
+          "workflow_stage_id": {
+            "name": "In progress"
+          },
+          "due_in_days": 1
+        },
+        "uuid": "3ff0b5b1-f52a-4dbc-96d0-d1291dc13edb",
+        "number": 1,
+        "extended_output_schema": [
+          {
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Record ID",
+                "type": "string",
+                "name": "11fbe9a6_a16d_4d7e_86ea_afe42ec03005"
+              },
+              {
+                "control_type": "text",
+                "label": "Name",
+                "type": "string",
+                "name": "2b44b054_369d_4745_bd7a_599629ed365e"
+              },
+              {
+                "control_type": "text",
+                "label": "Description",
+                "type": "string",
+                "name": "dfeba6df_9a09_4db0_bbb0_4847c61fa0d7"
+              },
+              {
+                "control_type": "text",
+                "label": "Review comments",
+                "type": "string",
+                "name": "bd504d17_9235_40c8_a843_75f6c82254cc"
+              },
+              {
+                "properties": [
+                  {
+                    "control_type": "text",
+                    "label": "User ID",
+                    "type": "string",
+                    "name": "id"
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "User name",
+                    "type": "string",
+                    "name": "name"
+                  },
+                  {
+                    "control_type": "email",
+                    "label": "Email",
+                    "type": "string",
+                    "name": "email"
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "Status",
+                    "type": "string",
+                    "name": "status"
+                  },
+                  {
+                    "name": "user_groups",
+                    "type": "array",
+                    "of": "object",
+                    "label": "Groups",
+                    "properties": [
+                      {
+                        "control_type": "text",
+                        "label": "Group ID",
+                        "type": "string",
+                        "name": "id"
+                      },
+                      {
+                        "control_type": "text",
+                        "label": "Group name",
+                        "type": "string",
+                        "name": "name"
+                      }
+                    ]
+                  },
+                  {
+                    "control_type": "checkbox",
+                    "label": "Guest user",
+                    "toggle_hint": "Select from option list",
+                    "toggle_field": {
+                      "label": "Guest user",
+                      "control_type": "text",
+                      "toggle_hint": "Use custom value",
+                      "render_input": null,
+                      "parse_output": null,
+                      "type": "boolean",
+                      "name": "is_guest"
+                    },
+                    "type": "boolean",
+                    "name": "is_guest"
+                  }
+                ],
+                "label": "Created by",
+                "type": "object",
+                "name": "created_by"
+              },
+              {
+                "properties": [
+                  {
+                    "control_type": "text",
+                    "label": "Stage ID",
+                    "type": "string",
+                    "name": "id"
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "Stage name",
+                    "type": "string",
+                    "name": "name"
+                  }
+                ],
+                "label": "Stage",
+                "type": "object",
+                "name": "stage"
+              },
+              {
+                "control_type": "date_time",
+                "label": "Created at",
+                "render_input": "date_time_conversion",
+                "parse_output": "date_time_conversion",
+                "type": "date_time",
+                "name": "a5612739_5401_4ae7_bd07_782c1a6fb2d1"
+              },
+              {
+                "control_type": "date_time",
+                "label": "Updated at",
+                "render_input": "date_time_conversion",
+                "parse_output": "date_time_conversion",
+                "type": "date_time",
+                "name": "61aae604_a95e_4519_9091_bb0bf754a67f"
+              }
+            ],
+            "label": "Record",
+            "type": "object",
+            "name": "record"
+          }
+        ]
+      },
+      {
+        "keyword": "if",
+        "input": {
+          "type": "compound",
+          "operand": "and",
+          "conditions": [
+            {
+              "operand": "is_true",
+              "lhs": "#{_('data.workato_workflow_task.human_review_on_existing_record.task.is_approved')}",
+              "rhs": "",
+              "uuid": "condition-d8e5ae23-8efa-4a2f-89d8-c716f59272c6"
+            }
+          ]
+        },
+        "block": [
+          {
+            "provider": "workato_workflow_task",
+            "keyword": "action",
+            "name": "change_workflow_stage",
+            "description": "Change the workflow stage of a request in <span class=\"provider\">New workflow app</span> to <span class=\"provider\">Done</span>",
+            "input": {
+              "project_id": {
+                "zip_name": "new_workflow_app.lcap_app.json",
+                "name": "New workflow app",
+                "folder": ""
+              },
+              "record_id": "#{_('data.workato_workflow_task.human_review_on_existing_record.record.11fbe9a6_a16d_4d7e_86ea_afe42ec03005')}",
+              "workflow_stage_id": {
+                "name": "Done"
+              }
+            },
+            "uuid": "6be3d0fd-f344-41d1-a1bd-d719ce78aa26",
+            "as": "2771d8c3",
+            "number": 3,
+            "extended_output_schema": null
+          },
+          {
+            "keyword": "else",
+            "block": [
+              {
+                "provider": "workato_workflow_task",
+                "keyword": "action",
+                "name": "change_workflow_stage",
+                "description": "Change the workflow stage of a request in <span class=\"provider\">New workflow app</span> to <span class=\"provider\">Canceled</span>",
+                "input": {
+                  "project_id": {
+                    "zip_name": "new_workflow_app.lcap_app.json",
+                    "name": "New workflow app",
+                    "folder": ""
+                  },
+                  "record_id": "#{_('data.workato_workflow_task.human_review_on_existing_record.record.11fbe9a6_a16d_4d7e_86ea_afe42ec03005')}",
+                  "workflow_stage_id": {
+                    "name": "Canceled"
+                  }
+                },
+                "uuid": "9a4935d0-613f-450a-bffb-ff16deb71ad6",
+                "as": "b18af855",
+                "number": 5,
+                "extended_output_schema": null
+              }
+            ],
+            "uuid": "d9998768-fef4-473c-bc77-ed2179eef506",
+            "as": "e488a0d5",
+            "number": 4,
+            "extended_output_schema": null
+          }
+        ],
+        "uuid": "c6abb6bb-2296-40ef-bc76-3e9578a47dcb",
+        "as": "240feb19",
+        "number": 2,
+        "extended_output_schema": null
+      }
+    ],
+    "uuid": "314ea7e5-7ca7-4fb8-870e-5dce61f2b7b5",
+    "number": 0,
+    "extended_output_schema": [
+      {
+        "properties": [
+          {
+            "control_type": "text",
+            "label": "Record ID",
+            "type": "string",
+            "name": "11fbe9a6_a16d_4d7e_86ea_afe42ec03005"
+          },
+          {
+            "control_type": "text",
+            "label": "Name",
+            "type": "string",
+            "name": "2b44b054_369d_4745_bd7a_599629ed365e"
+          },
+          {
+            "control_type": "text",
+            "label": "Description",
+            "type": "string",
+            "name": "dfeba6df_9a09_4db0_bbb0_4847c61fa0d7"
+          },
+          {
+            "control_type": "text",
+            "label": "Review comments",
+            "type": "string",
+            "name": "bd504d17_9235_40c8_a843_75f6c82254cc"
+          },
+          {
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "User ID",
+                "type": "string",
+                "name": "id"
+              },
+              {
+                "control_type": "text",
+                "label": "User name",
+                "type": "string",
+                "name": "name"
+              },
+              {
+                "control_type": "email",
+                "label": "Email",
+                "type": "string",
+                "name": "email"
+              },
+              {
+                "control_type": "text",
+                "label": "Status",
+                "type": "string",
+                "name": "status"
+              },
+              {
+                "name": "user_groups",
+                "type": "array",
+                "of": "object",
+                "label": "Groups",
+                "properties": [
+                  {
+                    "control_type": "text",
+                    "label": "Group ID",
+                    "type": "string",
+                    "name": "id"
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "Group name",
+                    "type": "string",
+                    "name": "name"
+                  }
+                ]
+              },
+              {
+                "control_type": "checkbox",
+                "label": "Guest user",
+                "toggle_hint": "Select from option list",
+                "toggle_field": {
+                  "label": "Guest user",
+                  "control_type": "text",
+                  "toggle_hint": "Use custom value",
+                  "render_input": null,
+                  "parse_output": null,
+                  "type": "boolean",
+                  "name": "is_guest"
+                },
+                "type": "boolean",
+                "name": "is_guest"
+              }
+            ],
+            "label": "Created by",
+            "type": "object",
+            "name": "created_by"
+          },
+          {
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Stage ID",
+                "type": "string",
+                "name": "id"
+              },
+              {
+                "control_type": "text",
+                "label": "Stage name",
+                "type": "string",
+                "name": "name"
+              }
+            ],
+            "label": "Stage",
+            "type": "object",
+            "name": "stage"
+          },
+          {
+            "control_type": "date_time",
+            "label": "Created at",
+            "render_input": "date_time_conversion",
+            "parse_output": "date_time_conversion",
+            "type": "date_time",
+            "name": "a5612739_5401_4ae7_bd07_782c1a6fb2d1"
+          },
+          {
+            "control_type": "date_time",
+            "label": "Updated at",
+            "render_input": "date_time_conversion",
+            "parse_output": "date_time_conversion",
+            "type": "date_time",
+            "name": "61aae604_a95e_4519_9091_bb0bf754a67f"
+          }
+        ],
+        "label": "Request",
+        "type": "object",
+        "name": "request"
+      }
+    ]
+  },
+  "config": [
+
+  ]
+}
