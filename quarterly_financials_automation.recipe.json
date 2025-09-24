@@ -10,7 +10,7 @@
     "name": "scheduled_event",
     "as": "fc6349bb",
     "title": null,
-    "description": "<span class=\"provider\">Trigger</span> every 3 months at <span class=\"provider\">12:00:00 AM</span> on day 1 of the month",
+    "description": "<span clandfss=\"provider\">Trigger</span> every 3 months at <span class=\"provider\">12:00:00 AM</span> on day 1 of the month",
     "keyword": "trigger",
     "dynamicPickListSelection": {
       "time_unit": "Months",
