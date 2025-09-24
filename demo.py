@@ -9,8 +9,8 @@
     {
       "field": "lon",
       "rule": "range",
-      "min": -180,
-      "max": 180
+      "min": -160,
+      "max": 160
     }
   ]
 }
