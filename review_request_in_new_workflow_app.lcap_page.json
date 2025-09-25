@@ -1,0 +1,234 @@
+{
+  "name": "Review request in New workflow app",
+  "path": "review-request-in-new-workflow-app",
+  "content": {
+    "background": {
+      "style": "pattern",
+      "pattern": "light-6"
+    },
+    "layout": [
+      1,
+      [
+        {
+          "type": "container",
+          "id": "ae6ec49f",
+          "name": "Main container",
+          "x": 1,
+          "width": 10,
+          "visible": true,
+          "layout": [
+            1,
+            [
+              {
+                "type": "container",
+                "id": "86b2c537",
+                "name": "Image container",
+                "x": 0,
+                "width": 12,
+                "visible": true,
+                "layout": [
+                  1,
+                  [
+                    {
+                      "type": "image",
+                      "id": "4f3d6e3c",
+                      "name": "Image",
+                      "x": 0,
+                      "width": 12,
+                      "height": 14,
+                      "visible": true,
+                      "image": "illustration-11",
+                      "fitting": "cover",
+                      "horizontalAlignment": "center",
+                      "verticalAlignment": "center"
+                    },
+                    0
+                  ]
+                ],
+                "backgroundColor": "#eacef7",
+                "borderColor": "transparent",
+                "padding": "none"
+              },
+              0
+            ],
+            [
+              {
+                "type": "container",
+                "id": "c2ad9102",
+                "name": "Form container",
+                "x": 0,
+                "width": 12,
+                "visible": true,
+                "layout": [
+                  1,
+                  [
+                    {
+                      "type": "text",
+                      "id": "08e7d65d",
+                      "name": "Form title",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "text": "# ✍️ Review request in New workflow app\nUse this form to review a request in New workflow app.",
+                      "alignment": "left",
+                      "color": "#24434f",
+                      "pillsSupportMarkdown": false
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "divider",
+                      "id": "aa4d27f2",
+                      "name": "Divider",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "backgroundColor": "#ced5db"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "input",
+                      "id": "1030704d",
+                      "name": "Name",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "dataSource": {
+                        "id": "Name",
+                        "type": "short-text"
+                      },
+                      "editable": false,
+                      "validations": {
+                        "required": {
+                          "condition": true
+                        }
+                      },
+                      "label": "Name",
+                      "hint": "",
+                      "placeholder": "",
+                      "style": "short-text"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "input",
+                      "id": "d5dfadf0",
+                      "name": "Description",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "dataSource": {
+                        "id": "Description",
+                        "type": "long-text"
+                      },
+                      "editable": false,
+                      "validations": {
+                        "required": {
+                          "condition": false
+                        }
+                      },
+                      "label": "Description",
+                      "hint": "",
+                      "placeholder": "",
+                      "textareaHeight": 96,
+                      "style": "long-text"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "input",
+                      "id": "8c3d806d",
+                      "name": "Review comments",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "dataSource": {
+                        "id": "Review comments",
+                        "type": "long-text"
+                      },
+                      "editable": true,
+                      "validations": {
+                        "required": {
+                          "condition": false
+                        }
+                      },
+                      "label": "Review comments",
+                      "hint": "",
+                      "placeholder": "",
+                      "textareaHeight": 96,
+                      "style": "long-text"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "button",
+                      "id": "c8fe3c68",
+                      "name": "Approve button",
+                      "x": 0,
+                      "width": 6,
+                      "visible": true,
+                      "handlers": {
+                        "click": {
+                          "type": "complete-task",
+                          "status": "approved",
+                          "statusLabel": ""
+                        }
+                      },
+                      "label": "Approve",
+                      "style": "filled",
+                      "enabled": true
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "button",
+                      "id": "f3af7eb1",
+                      "name": "Reject button",
+                      "x": 6,
+                      "width": 6,
+                      "visible": true,
+                      "handlers": {
+                        "click": {
+                          "type": "complete-task",
+                          "status": "rejected",
+                          "statusLabel": ""
+                        }
+                      },
+                      "label": "Reject",
+                      "style": "outline",
+                      "enabled": true
+                    },
+                    0
+                  ]
+                ],
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "padding": "none"
+              },
+              0
+            ]
+          ],
+          "backgroundColor": "#ffffff",
+          "borderColor": "#ced5db",
+          "padding": "large"
+        },
+        1
+      ]
+    ],
+    "type": "common",
+    "variables": [
+
+    ],
+    "handlers": {
+      "pageLoad": null
+    },
+    "maxWidth": "fixed"
+  }
+}

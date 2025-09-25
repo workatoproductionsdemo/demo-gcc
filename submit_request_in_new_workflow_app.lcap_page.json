@@ -1,0 +1,185 @@
+{
+  "name": "Submit request in New workflow app",
+  "path": "submit-request-in-new-workflow-app",
+  "content": {
+    "background": {
+      "style": "pattern",
+      "pattern": "light-2"
+    },
+    "layout": [
+      1,
+      [
+        {
+          "type": "container",
+          "id": "e021ca95",
+          "name": "Main container",
+          "x": 1,
+          "width": 10,
+          "visible": true,
+          "layout": [
+            1,
+            [
+              {
+                "type": "container",
+                "id": "33425f62",
+                "name": "Image container",
+                "x": 0,
+                "width": 5,
+                "visible": true,
+                "layout": [
+                  1,
+                  [
+                    {
+                      "type": "image",
+                      "id": "6b20b65d",
+                      "name": "Image",
+                      "x": 0,
+                      "width": 12,
+                      "height": 36,
+                      "visible": true,
+                      "image": "illustration-10",
+                      "fitting": "cover",
+                      "horizontalAlignment": "center",
+                      "verticalAlignment": "center"
+                    },
+                    0
+                  ]
+                ],
+                "backgroundColor": "#c8e2f8",
+                "borderColor": "transparent",
+                "padding": "none"
+              },
+              0
+            ],
+            [
+              {
+                "type": "container",
+                "id": "6918e28e",
+                "name": "Form container",
+                "x": 5,
+                "width": 7,
+                "visible": true,
+                "layout": [
+                  1,
+                  [
+                    {
+                      "type": "text",
+                      "id": "0c645be1",
+                      "name": "Form title",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "text": "# 🚀 Submit request in New workflow app\nUse this form to submit a request in New workflow app.",
+                      "alignment": "left",
+                      "color": "#24434f",
+                      "pillsSupportMarkdown": false
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "divider",
+                      "id": "8afe7ce8",
+                      "name": "Divider",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "backgroundColor": "#ced5db"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "input",
+                      "id": "04f74798",
+                      "name": "Name",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "dataSource": {
+                        "id": "Name",
+                        "type": "short-text"
+                      },
+                      "editable": true,
+                      "validations": {
+                        "required": {
+                          "condition": true
+                        }
+                      },
+                      "label": "Name",
+                      "hint": "",
+                      "placeholder": "",
+                      "style": "short-text"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "input",
+                      "id": "069b096e",
+                      "name": "Description",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "dataSource": {
+                        "id": "Description",
+                        "type": "long-text"
+                      },
+                      "editable": true,
+                      "validations": {
+                        "required": {
+                          "condition": false
+                        }
+                      },
+                      "label": "Description",
+                      "hint": "",
+                      "placeholder": "",
+                      "textareaHeight": 96,
+                      "style": "long-text"
+                    },
+                    0
+                  ],
+                  [
+                    {
+                      "type": "button",
+                      "id": "6e4f73b8",
+                      "name": "Submit button",
+                      "x": 0,
+                      "width": 12,
+                      "visible": true,
+                      "handlers": {
+                        "click": {
+                          "type": "save-data"
+                        }
+                      },
+                      "label": "Submit",
+                      "style": "filled",
+                      "enabled": true
+                    },
+                    0
+                  ]
+                ],
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "padding": "none"
+              },
+              0
+            ]
+          ],
+          "backgroundColor": "#ffffff",
+          "borderColor": "#ced5db",
+          "padding": "large"
+        },
+        1
+      ]
+    ],
+    "type": "common",
+    "variables": [
+
+    ],
+    "handlers": {
+      "pageLoad": null
+    },
+    "maxWidth": "fixed"
+  }
+}
