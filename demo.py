@@ -3,8 +3,8 @@
     {
       "field": "lat",
       "rule": "range",
-      "min": -90,
-      "max": 90
+      "min": -80,
+      "max": 80
     },
     {
       "field": "lon",
